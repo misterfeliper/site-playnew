@@ -1,0 +1,2684 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayNew • Servidor Survival</title>
+    <link rel="icon" type="image/png" href="https://orig00.deviantart.net/da8e/f/2013/184/6/6/blue_minecraft_icon_by_mrghost_x-d6bv6xu.png">
+    <meta name="description" content="PlayNew - Melhor servidor Minecraft Survival! IP: jogar.playnew.online:12304. Proteção de terrenos, lojas player, PvP controlado, eventos diários.">
+    <meta property="og:title" content="PlayNew Minecraft Server">
+    <meta property="og:description" content="Jogue no melhor servidor Survival! IP: jogar.playnew.online:12304">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2196F3;
+            --primary-dark: #1976D2;
+            --primary-light: #64B5F6;
+            --secondary: #42A5F5;
+            --accent: #29B6F6;
+            --blue-light: #90CAF9;
+            --blue-dark: #1565C0;
+            --cyan: #00BCD4;
+            --teal: #009688;
+            --dark: #121212;
+            --dark-light: #1E1E1E;
+            --darker: #0A0A0A;
+            --light: #FFFFFF;
+            --gray: #9E9E9E;
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --danger: #F44336;
+            --card-bg: rgba(25, 118, 210, 0.1);
+            --card-border: rgba(33, 150, 243, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            background-color: var(--dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(18, 18, 18, 0.98);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid var(--primary);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            color: var(--primary);
+            font-size: 2.8rem;
+        }
+        
+        .logo-text h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: var(--light);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .logo-text p {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+        
+        /* Menu Desktop - NOVO DESIGN SIMPLIFICADO */
+        .desktop-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .desktop-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .desktop-menu a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            padding: 10px 15px;
+            border-radius: 8px;
+        }
+        
+        .desktop-menu a:hover {
+            color: var(--primary);
+            background-color: rgba(33, 150, 243, 0.1);
+        }
+        
+        .desktop-menu a.active {
+            color: var(--primary);
+            background-color: rgba(33, 150, 243, 0.15);
+            font-weight: 600;
+        }
+        
+        .discord-menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #7289DA, #5B6EA6);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .discord-menu-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(114, 137, 218, 0.4);
+        }
+        
+        .status-menu-btn {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .status-menu-btn:hover {
+            color: var(--primary);
+            background-color: rgba(33, 150, 243, 0.1);
+        }
+        
+        .status-indicator-small {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--gray);
+        }
+        
+        .status-indicator-small.online {
+            background-color: var(--success);
+            box-shadow: 0 0 10px var(--success);
+        }
+        
+        /* Menu Mobile */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(10, 10, 10, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(20px);
+        }
+        
+        .mobile-menu.active {
+            display: flex;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+            padding: 0 20px;
+        }
+        
+        .mobile-menu li {
+            margin: 15px 0;
+        }
+        
+        .mobile-menu a, .mobile-menu .mobile-status-btn {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: block;
+            padding: 20px 30px;
+            border-radius: 15px;
+            width: 100%;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .mobile-menu a:hover, .mobile-menu .mobile-status-btn:hover {
+            background-color: rgba(33, 150, 243, 0.1);
+            color: var(--primary);
+        }
+        
+        .mobile-menu a.active {
+            background-color: rgba(33, 150, 243, 0.2);
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .mobile-discord-btn {
+            background: linear-gradient(135deg, #7289DA, #5B6EA6);
+            color: white;
+            margin-top: 30px;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .mobile-discord-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(114, 137, 218, 0.4);
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .close-menu:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(21, 101, 192, 0.3) 100%);
+        }
+        
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--light);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        .server-ip-container {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 40px 0;
+            border: 3px solid var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .server-ip-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(33, 150, 243, 0.1), transparent);
+            transform: rotate(45deg);
+        }
+        
+        .server-ip-container h3 {
+            color: var(--light);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        .server-ip-display {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px 50px;
+            border-radius: 15px;
+            letter-spacing: 2px;
+            border: 3px solid var(--primary-dark);
+            margin-bottom: 25px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .server-ip-display::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .copy-ip-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--light);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .copy-ip-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.4);
+        }
+        
+        .server-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 20px 35px;
+            border-radius: 50px;
+            margin-top: 30px;
+            border: 2px solid var(--dark-light);
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        
+        .server-status-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .status-indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            position: relative;
+        }
+        
+        .status-indicator.online {
+            background-color: var(--success);
+            box-shadow: 0 0 20px var(--success);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { 
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+            }
+            70% { 
+                box-shadow: 0 0 0 15px rgba(76, 175, 80, 0);
+            }
+            100% { 
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+            }
+        }
+        
+        /* Section Common Styles */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            color: var(--light);
+            margin-bottom: 20px;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--cyan));
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        /* Server Info Section */
+        .server-info {
+            background: linear-gradient(to bottom, rgba(18, 18, 18, 0.8), rgba(21, 101, 192, 0.2));
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 40px 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cyan), var(--teal));
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--cyan);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, rgba(0, 188, 212, 0.2), rgba(33, 150, 243, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--cyan);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), rgba(21, 101, 192, 0.3));
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+        
+        .team-card {
+            background-color: var(--card-bg);
+            padding: 40px 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s;
+            border: 2px solid transparent;
+            backdrop-filter: blur(5px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .player-head {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 4px solid var(--primary);
+            background-color: #2a2a2a;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .team-card:hover .player-head {
+            transform: rotate(5deg) scale(1.05);
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.3);
+        }
+        
+        .player-head img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-rendering: pixelated;
+            transition: all 0.3s;
+        }
+        
+        .team-card:hover .player-head img {
+            transform: scale(1.1);
+        }
+        
+        .team-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+        
+        .team-card .role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: block;
+            font-size: 1.2rem;
+            padding: 8px 20px;
+            background-color: rgba(33, 150, 243, 0.1);
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        /* Store Section */
+        .store-section {
+            background: linear-gradient(to bottom, rgba(25, 118, 210, 0.3), rgba(10, 10, 10, 0.9));
+        }
+        
+        .store-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+        
+        .store-intro p {
+            color: var(--gray);
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+        
+        .vip-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .vip-card {
+            background-color: var(--card-bg);
+            border-radius: 25px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 3px solid transparent;
+            position: relative;
+            backdrop-filter: blur(5px);
+        }
+        
+        .vip-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .vip-card.blue1 {
+            border-color: var(--primary-light);
+        }
+        
+        .vip-card.blue1 .vip-header {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+        }
+        
+        .vip-card.blue2 {
+            border-color: var(--primary);
+        }
+        
+        .vip-card.blue2 .vip-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+        
+        .vip-card.blue3 {
+            border-color: var(--cyan);
+        }
+        
+        .vip-card.blue3 .vip-header {
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+        }
+        
+        .vip-header {
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vip-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+        }
+        
+        .vip-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vip-image i {
+            font-size: 4rem;
+            z-index: 1;
+        }
+        
+        .vip-card.blue1 .vip-image {
+            background-color: rgba(144, 202, 249, 0.2);
+            border-color: var(--primary-light);
+        }
+        
+        .vip-card.blue1 .vip-image i {
+            color: var(--primary-light);
+        }
+        
+        .vip-card.blue2 .vip-image {
+            background-color: rgba(33, 150, 243, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .vip-card.blue2 .vip-image i {
+            color: var(--primary);
+        }
+        
+        .vip-card.blue3 .vip-image {
+            background-color: rgba(0, 188, 212, 0.2);
+            border-color: var(--cyan);
+        }
+        
+        .vip-card.blue3 .vip-image i {
+            color: var(--cyan);
+        }
+        
+        .vip-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .vip-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .vip-period {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .vip-body {
+            padding: 40px;
+        }
+        
+        .vip-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        
+        .vip-features li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .vip-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .vip-features li i {
+            color: var(--primary);
+            font-size: 1.3rem;
+            min-width: 25px;
+        }
+        
+        .buy-btn {
+            display: block;
+            width: 100%;
+            padding: 22px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .buy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(33, 150, 243, 0.4);
+        }
+        
+        .buy-btn.blue1 {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+        }
+        
+        .buy-btn.blue1:hover {
+            box-shadow: 0 15px 30px rgba(144, 202, 249, 0.4);
+        }
+        
+        .buy-btn.blue2 {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+        
+        .buy-btn.blue2:hover {
+            box-shadow: 0 15px 30px rgba(33, 150, 243, 0.4);
+        }
+        
+        .buy-btn.blue3 {
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+        }
+        
+        .buy-btn.blue3:hover {
+            box-shadow: 0 15px 30px rgba(0, 188, 212, 0.4);
+        }
+        
+        /* Discord Integration */
+        .discord-section {
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.8), rgba(114, 137, 218, 0.2));
+        }
+        
+        .discord-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .discord-info h3 {
+            font-size: 2.5rem;
+            color: var(--light);
+            margin-bottom: 25px;
+        }
+        
+        .discord-info p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .discord-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .discord-feature {
+            background-color: rgba(114, 137, 218, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(114, 137, 218, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .discord-feature:hover {
+            border-color: #7289DA;
+            transform: translateY(-5px);
+        }
+        
+        .discord-feature i {
+            font-size: 2.5rem;
+            color: #7289DA;
+            margin-bottom: 20px;
+        }
+        
+        .discord-feature h4 {
+            font-size: 1.3rem;
+            color: var(--light);
+            margin-bottom: 15px;
+        }
+        
+        .discord-feature p {
+            color: var(--gray);
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        .discord-widget {
+            background-color: rgba(114, 137, 218, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid #7289DA;
+            height: 500px;
+        }
+        
+        .discord-widget iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .join-discord-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #7289DA, #5B6EA6);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .join-discord-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(114, 137, 218, 0.4);
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 50px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .payment-methods h4 {
+            color: var(--light);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        .payment-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .payment-icons i {
+            font-size: 3rem;
+            color: var(--gray);
+            transition: all 0.3s;
+        }
+        
+        .payment-icons i:hover {
+            transform: translateY(-5px);
+            color: var(--primary);
+        }
+        
+        .payment-icons .fa-credit-card {
+            color: var(--primary-light);
+        }
+        
+        .payment-icons .fa-pix {
+            color: #32BCAD;
+        }
+        
+        .payment-icons .fa-barcode {
+            color: #00B894;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(10, 10, 10, 0.98);
+            padding: 80px 0 30px;
+            margin-top: 80px;
+            border-top: 3px solid var(--primary);
+            position: relative;
+            backdrop-filter: blur(20px);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+        }
+        
+        .footer-section p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+.footer-credit {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.footer-credit p {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin: 0;
+}
+
+.footer-credit a {
+    color: #7cff9e; /* pode trocar para a cor principal do site */
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+
+.footer-credit a:hover {
+    color: #a6ffbf;
+    text-shadow: 0 0 8px rgba(124, 255, 158, 0.6);
+}
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            background-color: var(--dark-light);
+            border-radius: 50%;
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 1rem;
+        }
+        
+        /* Status Modal */
+        .status-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .status-modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 60px 50px;
+            border-radius: 30px;
+            max-width: 1000px;
+            width: 100%;
+            border: 3px solid var(--primary);
+            position: relative;
+            backdrop-filter: blur(20px);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--light);
+            transform: rotate(90deg);
+        }
+        
+        .modal-content h3 {
+            color: var(--light);
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 2.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .server-checker {
+            margin-bottom: 50px;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid var(--dark-light);
+        }
+        
+        .server-checker h4 {
+            color: var(--light);
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .checker-form {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .server-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 18px 25px;
+            border-radius: 15px;
+            border: 2px solid var(--dark-light);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--light);
+            font-size: 1.1rem;
+        }
+        
+        .server-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .check-btn {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--light);
+            border: none;
+            border-radius: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .check-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(33, 150, 243, 0.4);
+        }
+        
+        .status-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .status-item {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 30px 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid var(--dark-light);
+        }
+        
+        .status-item .label {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .status-item .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+        
+        .status-item .value.online {
+            color: var(--success);
+        }
+        
+        .status-item .value.offline {
+            color: var(--danger);
+        }
+        
+        .players-section {
+            margin-top: 50px;
+        }
+        
+        .players-section h4 {
+            color: var(--light);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 25px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .player-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 25px 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .player-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .player-head-modal {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+        }
+        
+        .player-head-modal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-rendering: pixelated;
+        }
+        
+        .player-card span {
+            display: block;
+            color: var(--light);
+            font-weight: 500;
+            font-size: 1.1rem;
+            word-break: break-word;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            background-color: var(--primary);
+            color: white;
+            padding: 25px 35px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            z-index: 2001;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transform: translateX(150%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 450px;
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--primary-dark);
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            background-color: var(--success);
+            border-color: #388E3C;
+        }
+        
+        .notification.error {
+            background-color: var(--danger);
+            border-color: #D32F2F;
+        }
+        
+        .notification.info {
+            background-color: var(--primary);
+            border-color: var(--primary-dark);
+        }
+        
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            z-index: 99;
+            display: none;
+        }
+        
+        .scroll-top.show {
+            display: block;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(33, 150, 243, 0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 100%;
+                padding: 0 30px;
+            }
+            
+            .vip-cards {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+            
+            .discord-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .discord-widget {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 1100px) {
+            .desktop-menu ul {
+                gap: 15px;
+            }
+            
+            .desktop-menu a {
+                padding: 8px 12px;
+                font-size: 1rem;
+            }
+            
+            .discord-menu-btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .desktop-menu {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .server-ip-container {
+                padding: 30px 20px;
+            }
+            
+            .server-ip-display {
+                font-size: 2rem;
+                padding: 15px 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .features-grid,
+            .team-grid,
+            .vip-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 40px 25px;
+            }
+            
+            .status-details-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .players-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .checker-form {
+                flex-direction: column;
+            }
+            
+            .server-input,
+            .check-btn {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .mobile-menu a, .mobile-menu .mobile-status-btn {
+                font-size: 1.3rem;
+                padding: 15px 25px;
+            }
+            
+            .mobile-discord-btn {
+                font-size: 1.3rem;
+                padding: 15px 30px;
+            }
+            
+            .discord-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .discord-widget {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .server-ip-display {
+                font-size: 1.6rem;
+                padding: 12px 20px;
+            }
+            
+            .copy-ip-btn,
+            .buy-btn,
+            .join-discord-btn {
+                padding: 15px 25px;
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card,
+            .team-card {
+                padding: 30px 25px;
+            }
+            
+            .status-details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .players-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .vip-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .vip-card {
+                max-width: 100%;
+            }
+            
+            .mobile-menu a, .mobile-menu .mobile-status-btn {
+                font-size: 1.2rem;
+                padding: 12px 20px;
+            }
+            
+            .mobile-discord-btn {
+                font-size: 1.2rem;
+                padding: 12px 25px;
+            }
+            
+            .logo-text h1 {
+                font-size: 1.6rem;
+            }
+            
+            .logo-icon {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .server-ip-display {
+                font-size: 1.4rem;
+                padding: 10px 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .vip-header {
+                padding: 30px 20px;
+            }
+            
+            .vip-title {
+                font-size: 2rem;
+            }
+            
+            .vip-price {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Partículas Background -->
+    <div id="particles-js"></div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-text">IP copiado com sucesso!</span>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>PlayNew</h1>
+                    <p>Survival</p>
+                </div>
+            </a>
+            
+            <!-- Menu Desktop -->
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#store">VIP</a></li>
+                    <li><a href="#team">Equipe</a></li>
+                    <li><button class="status-menu-btn" id="statusBtn">
+                        <div class="status-indicator-small" id="statusIndicatorSmall"></div>
+                        Status
+                    </button></li>
+                </ul>
+                <a href="https://discord.gg/CGYeTWvCGt" target="_blank" class="discord-menu-btn">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+            </nav>
+            
+            <!-- Botão Menu Mobile -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menu Mobile -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenuBtn">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#store">VIP</a></li>
+            <li><a href="#team">Equipe</a></li>
+            <li><button class="mobile-status-btn" id="mobileStatusBtn">
+                <i class="fas fa-server"></i> Status do Servidor
+            </button></li>
+        </ul>
+        <a href="https://discord.gg/CGYeTWvCGt" target="_blank" class="mobile-discord-btn">
+            <i class="fab fa-discord"></i> Entrar no Discord
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>PlayNew <span>Craft</span></h1>
+            <p class="hero-subtitle">Servidor Survival Multiplataforma • Versão Atualizada • Mapa Novo • Eventos Diários • Comunidade Ativa</p>
+            
+            <div class="server-ip-container">
+                <h3>Conecte-se ao servidor:</h3>
+                <div class="server-ip-display" id="serverIpDisplay">jogar.playnew.online:12304</div>
+                <button class="copy-ip-btn" id="copyIpBtn">
+                    <i class="fas fa-copy"></i> Copiar IP
+                </button>
+            </div>
+            
+            <div class="server-status-badge" id="serverStatusBadge">
+                <div class="status-indicator" id="statusIndicator"></div>
+                <span id="statusText">Verificando status...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Server Info Section -->
+    <section class="server-info" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-info-circle"></i> Sobre o Servidor</h2>
+                <p>PlayNew é um servidor Survival completo com proteções, lojas, PvP e muito mais. Perfeito para todas as plataformas!</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Survival Puro</h3>
+                    <p>Experiência de sobrevivência clássica com mecânicas modernas e balanceadas para diversão de todos.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h3>Mapa Novo</h3>
+                    <p>Mundo recém-gerado com terrenos virgens para exploração. Sem restrições de construção!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Proteção de Terreno</h3>
+                    <p>Sistema de claims avançado para proteger suas construções e itens de outros jogadores.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Lojas Player</h3>
+                    <p>Sistema de economia e lojas player-to-player para comprar e vender itens facilmente.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <h3>PvP Controlado</h3>
+                    <p>Áreas específicas para PvP com regras balanceadas. Diversão garantida sem perder seus itens!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Versão Recente</h3>
+                    <p>Sempre atualizado para a versão mais recente do Minecraft com todos os novos recursos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-users"></i> Nossa Equipe</h2>
+                <p>Conheça a equipe que mantém o servidor funcionando e a comunidade ativa!</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="player-head">
+                        <img src="https://mc-heads.net/avatar/FelipeR4241/200" alt="FelipeR4241">
+                    </div>
+                    <h3>MrFelipeR</h3>
+                    <span class="role">Dono</span>
+                </div>
+                
+                <div class="team-card">
+                    <div class="player-head">
+                        <img src="https://mc-heads.net/avatar/nob557509/200" alt="nob557509">
+                    </div>
+                    <h3>nob557509</h3>
+                    <span class="role">Administrador</span>
+                </div>
+                
+                <div class="team-card">
+                    <div class="player-head">
+                        <img src="https://mc-heads.net/avatar/Viniquest/200" alt="Viniquest">
+                    </div>
+                    <h3>Viniquest</h3>
+                    <span class="role">Administrador</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section class="store-section" id="store">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-crown"></i> VIPs do Servidor</h2>
+                <p>Adquira vantagens especiais e apoie o servidor!</p>
+            </div>
+            
+            <div class="store-intro">
+                <p>Os benefícios VIP são vantagens <strong>não-pay-to-win</strong> que ajudam a manter o servidor online. Ao adquirir um VIP, você recebe recursos cosméticos e de conveniência que melhoram sua experiência sem afetar o equilíbrio do jogo.</p>
+                <p style="margin-top: 20px; color: var(--primary); font-weight: 600;">
+                    <i class="fas fa-info-circle"></i> Todos os VIPs são <strong>mensais</strong> e precisam ser renovados a todo mês!
+                </p>
+            </div>
+            
+            <div class="vip-cards">
+                <!-- VIP 1 - Azul Claro -->
+                <div class="vip-card blue1">
+                    <div class="vip-header">
+                        <div class="vip-image">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3 class="vip-title">VIP FERRO</h3>
+                        <div class="vip-price">R$ 10,00</div>
+                        <div class="vip-period">Acesso Mensal</div>
+                    </div>
+                    
+                    <div class="vip-body">
+                        <ul class="vip-features">
+                            <li><i class="fas fa-check"></i> <strong>Tag [VIPFERRO]</strong> no chat</li>
+                            <li><i class="fas fa-check"></i> <strong>+2 homes</strong> extras</li>
+                            <li><i class="fas fa-check"></i> Acesso a <strong>/hat</strong></li>
+                            <li><i class="fas fa-check"></i> <strong>Fly</strong> em áreas seguras</li>
+                            <li><i class="fas fa-check"></i> <strong>Pets</strong> cosméticos</li>
+                            <li><i class="fas fa-check"></i> Prefixo personalizado</li>
+                        </ul>
+                        
+                        <a href="https://mpago.la/2tUZeTY" target="_blank" class="buy-btn blue1">
+                            <i class="fas fa-shopping-cart"></i> Comprar VIP FERRO
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- VIP 2 - Azul Médio -->
+                <div class="vip-card blue2">
+                    <div class="vip-header">
+                        <div class="vip-image">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3 class="vip-title">VIP OURO</h3>
+                        <div class="vip-price">R$ 20,00</div>
+                        <div class="vip-period">Acesso Mensal</div>
+                    </div>
+                    
+                    <div class="vip-body">
+                        <ul class="vip-features">
+                            <li><i class="fas fa-check"></i> <strong>Todos os benefícios do VIP OURO</strong></li>
+                            <li><i class="fas fa-check"></i> <strong>Tag [VIPOURO]</strong> no chat</li>
+                            <li><i class="fas fa-check"></i> <strong>+5 homes</strong> extras</li>
+                            <li><i class="fas fa-check"></i> Acesso a <strong>/ec</strong> (enderchest)</li>
+                            <li><i class="fas fa-check"></i> <strong>Fly</strong> em todo servidor</li>
+                            <li><i class="fas fa-check"></i> <strong>Trails</strong> e partículas</li>
+                        </ul>
+                        
+                        <a href="https://mpago.la/2xqCLJq" target="_blank" class="buy-btn blue2">
+                            <i class="fas fa-shopping-cart"></i> Comprar VIP OURO
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- VIP 3 - Ciano -->
+                <div class="vip-card blue3">
+                    <div class="vip-header">
+                        <div class="vip-image">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="vip-title">VIP DIMA</h3>
+                        <div class="vip-price">R$ 30,00</div>
+                        <div class="vip-period">Acesso Mensal</div>
+                    </div>
+                    
+                    <div class="vip-body">
+                        <ul class="vip-features">
+                            <li><i class="fas fa-check"></i> <strong>Todos os benefícios do VIP DIMA</strong></li>
+                            <li><i class="fas fa-check"></i> <strong>Tag [VIPDIMA]</strong> no chat</li>
+                            <li><i class="fas fa-check"></i> <strong>+10 homes</strong> extras</li>
+                            <li><i class="fas fa-check"></i> Acesso a <strong>/workbench</strong></li>
+                            <li><i class="fas fa-check"></i> <strong>Pacote de cosméticos</strong> exclusivo</li>
+                            <li><i class="fas fa-check"></i> <strong>Prioridade</strong> no suporte</li>
+                        </ul>
+                        
+                        <a href="https://mpago.la/2qfq6Z9" target="_blank" class="buy-btn blue3">
+                            <i class="fas fa-shopping-cart"></i> Comprar VIP DIMA
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="payment-methods">
+                <h4>Formas de Pagamento</h4>
+                <div class="payment-icons">
+                    <i class="fas fa-credit-card" title="Cartão de Crédito e Débito"></i>
+                    <i class="fa-brands fa-pix" title="PIX"></i>
+                    <i class="fas fa-barcode" title="Boleto Bancário"></i>
+                </div>
+                <p style="color: var(--gray); margin-top: 25px; font-size: 1rem;">
+                    <i class="fas fa-shield-alt"></i> Pagamentos processados com segurança pelo Mercado Pago
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discord Integration -->
+    <section class="discord-section" id="discord">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fab fa-discord"></i> Comunidade Discord</h2>
+                <p>Junte-se à nossa comunidade no Discord para ficar por dentro de tudo!</p>
+            </div>
+            
+            <div class="discord-container">
+                <div class="discord-info">
+                    <h3>Participe da Nossa Comunidade</h3>
+                    <p>No nosso Discord você encontra anuncios de eventos, chat com outros jogadores, suporte da equipe e muito mais!</p>
+                    
+                    <div class="discord-features">
+                        <div class="discord-feature">
+                            <i class="fas fa-bullhorn"></i>
+                            <h4>Anúncios</h4>
+                            <p>Fique por dentro de todas as novidades</p>
+                        </div>
+                        <div class="discord-feature">
+                            <i class="fas fa-comments"></i>
+                            <h4>Chat Ativo</h4>
+                            <p>Converse com outros jogadores</p>
+                        </div>
+                        <div class="discord-feature">
+                            <i class="fas fa-headset"></i>
+                            <h4>Suporte</h4>
+                            <p>Tire suas dúvidas com a equipe</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://discord.gg/CGYeTWvCGt" target="_blank" class="join-discord-btn">
+                        <i class="fab fa-discord"></i> Entrar no Discord
+                    </a>
+                </div>
+                
+                <div class="discord-widget">
+                    <iframe src="https://discord.com/widget?id=1404104617595502662&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container" >
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>PlayNew Minecraft</h3>
+                    <p>Servidor Survival completo para Minecraft, disponível em todas as plataformas. Diversão garantida para toda a comunidade!</p>
+                    <div class="social-icons">
+                        <a href="https://discord.gg/CGYeTWvCGt" target="_blank"><i class="fab fa-discord" ></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Conecte-se</h3>
+                    <p><strong>IP do Servidor:</strong><br>jogar.playnew.online:12304</p>
+                    <p><strong>Versão:</strong> Minecraft 1.20+</p>
+                    <p><strong>Tipo:</strong> Survival com proteções</p>
+                    <p><strong>Status:</strong> <span id="footerStatus">Verificando...</span></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <p><a href="#home" style="color: var(--gray); text-decoration: none;">Home</a></p>
+                    <p><a href="#about" style="color: var(--gray); text-decoration: none;">Sobre</a></p>
+                    <p><a href="#store" style="color: var(--gray); text-decoration: none;">VIP</a></p>
+                    <p><a href="#team" style="color: var(--gray); text-decoration: none;">Equipe</a></p>
+                    <p><a href="https://discord.gg/CGYeTWvCGt" style="color: var(--gray); text-decoration: none;">Discord</a></p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span id="currentYear">2026</span> PlayNew Minecraft Server. Todos os direitos reservados.</p>
+                <p>Minecraft é uma marca registrada da Mojang AB. Não somos afiliados à Mojang ou Microsoft.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">
+                    <span id="playerCountFooter">0</span> jogadores online • 
+                    <span id="serverUptime">--</span> de uptime • 
+                    Última atualização: <span id="lastUpdate">--:--</span>
+                </p>
+            </div>
+	<div class="footer-credit">
+    <p>
+        Criado por 
+        <a href="https://maelgamer998.github.io/sobre/" target="_blank" rel="noopener">
+            MAEL
+        </a>
+    </p>
+</div>
+
+        </div>
+    </footer>
+
+    <!-- Status Modal -->
+    <div class="status-modal" id="statusModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h3>Status do Servidor</h3>
+            
+            <div class="server-checker">
+                <h4><i class="fas fa-search"></i> Verificar Status de Qualquer Servidor</h4>
+                <div class="checker-form">
+                    <input type="text" class="server-input" id="customServerInput" placeholder="IP do servidor (ex: play.new.server:25565)" value="jogar.playnew.online:19037">
+                    <button class="check-btn" id="checkServerBtn">
+                        <i class="fas fa-search"></i> Verificar Status
+                    </button>
+                </div>
+            </div>
+            
+            <div id="statusModalContent">
+                <div style="text-align: center; padding: 50px;">
+                    <div class="loading" style="margin: 0 auto 25px; width: 40px; height: 40px;"></div>
+                    <p style="color: var(--gray); font-size: 1.2rem;">Verificando status do servidor...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // ============================
+        // CONFIGURAÇÕES DO SITE
+        // ============================
+        const CONFIG = {
+            SERVER_IP: "jogar.playnew.online",
+            SERVER_PORT: 12304,
+            CURRENT_YEAR: new Date().getFullYear(),
+            DISCORD_ID: "1404104617595502662",
+            STATUS_API: "https://api.mcsrvstat.us/2/",
+            CACHE_ENABLED: true,
+            CACHE_TTL: 30000
+        };
+        
+        // ============================
+        // ELEMENTOS DOM
+        // ============================
+        const elements = {
+            notification: document.getElementById('notification'),
+            notificationText: document.getElementById('notification-text'),
+            serverIpDisplay: document.getElementById('serverIpDisplay'),
+            copyIpBtn: document.getElementById('copyIpBtn'),
+            statusIndicator: document.getElementById('statusIndicator'),
+            statusIndicatorSmall: document.getElementById('statusIndicatorSmall'),
+            statusText: document.getElementById('statusText'),
+            serverStatusBadge: document.getElementById('serverStatusBadge'),
+            footerStatus: document.getElementById('footerStatus'),
+            statusBtn: document.getElementById('statusBtn'),
+            mobileStatusBtn: document.getElementById('mobileStatusBtn'),
+            statusModal: document.getElementById('statusModal'),
+            closeModal: document.getElementById('closeModal'),
+            statusModalContent: document.getElementById('statusModalContent'),
+            customServerInput: document.getElementById('customServerInput'),
+            checkServerBtn: document.getElementById('checkServerBtn'),
+            mobileMenuBtn: document.getElementById('mobileMenuBtn'),
+            closeMenuBtn: document.getElementById('closeMenuBtn'),
+            mobileMenu: document.getElementById('mobileMenu'),
+            playerCountFooter: document.getElementById('playerCountFooter'),
+            serverUptime: document.getElementById('serverUptime'),
+            lastUpdate: document.getElementById('lastUpdate'),
+            currentYear: document.getElementById('currentYear'),
+            scrollTopBtn: document.getElementById('scrollTopBtn')
+        };
+        
+        // ============================
+        // ESTADO DA APLICAÇÃO
+        // ============================
+        const appState = {
+            serverStatus: null,
+            lastUpdate: null,
+            isChecking: false,
+            currentServer: `${CONFIG.SERVER_IP}:${CONFIG.SERVER_PORT}`,
+            serverStartTime: null,
+            cache: {},
+            lastCacheTime: {}
+        };
+        
+        // ============================
+        // INICIALIZAÇÃO
+        // ============================
+        function init() {
+            initParticles();
+            initCurrentYear();
+            initEventListeners();
+            initStatusSystem();
+            initScrollTop();
+        }
+        
+        // ============================
+        // PARTÍCULAS BACKGROUND
+        // ============================
+        function initParticles() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: ['#2196F3', '#64B5F6', '#90CAF9', '#00BCD4'] },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true, anim: { enable: true, speed: 1, opacity_min: 0.1 } },
+                    size: { value: 3, random: true, anim: { enable: true, speed: 2, size_min: 0.1 } },
+                    line_linked: { enable: true, distance: 150, color: '#64B5F6', opacity: 0.2, width: 1 },
+                    move: { enable: true, speed: 1, direction: 'none', random: true, straight: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: { enable: true, mode: 'grab' },
+                        onclick: { enable: true, mode: 'push' }
+                    }
+                },
+                retina_detect: true
+            });
+        }
+        
+        // ============================
+        // SISTEMA DE STATUS
+        // ============================
+        function initStatusSystem() {
+            // Verificar status inicial
+            checkServerStatus(appState.currentServer);
+            
+            // Atualizar a cada 30 segundos
+            setInterval(() => {
+                checkServerStatus(appState.currentServer);
+            }, 30000);
+            
+            // Atualizar tempo de uptime a cada segundo
+            setInterval(updateUptime, 1000);
+        }
+        
+        async function checkServerStatus(serverAddress = null) {
+            const address = serverAddress || appState.currentServer;
+            
+            if (appState.isChecking) return;
+            
+            // Verificar cache
+            const cacheKey = address;
+            const now = Date.now();
+            if (CONFIG.CACHE_ENABLED && 
+                appState.cache[cacheKey] && 
+                appState.lastCacheTime[cacheKey] && 
+                (now - appState.lastCacheTime[cacheKey]) < CONFIG.CACHE_TTL) {
+                
+                const cachedData = appState.cache[cacheKey];
+                appState.serverStatus = cachedData;
+                appState.lastUpdate = new Date();
+                appState.currentServer = address;
+                
+                updateStatusUI(cachedData);
+                
+                if (elements.statusModal.classList.contains('active')) {
+                    updateStatusModalContent(cachedData, address);
+                }
+                
+                return;
+            }
+            
+            appState.isChecking = true;
+            updateUIForLoading();
+            
+            try {
+                const apiUrl = `${CONFIG.STATUS_API}${address}`;
+                
+                const response = await fetch(apiUrl, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'User-Agent': 'PlayNew Status Checker'
+                    },
+                    mode: 'cors'
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Adicionar timestamp
+                data.timestamp = new Date().toISOString();
+                
+                // Cache dos dados
+                if (CONFIG.CACHE_ENABLED) {
+                    appState.cache[cacheKey] = data;
+                    appState.lastCacheTime[cacheKey] = now;
+                }
+                
+                appState.serverStatus = data;
+                appState.lastUpdate = new Date();
+                appState.currentServer = address;
+                
+                // Se for o primeiro status online, registrar o tempo
+                if (data.online && !appState.serverStartTime) {
+                    appState.serverStartTime = new Date();
+                } else if (!data.online) {
+                    appState.serverStartTime = null;
+                }
+                
+                updateStatusUI(data);
+                
+                if (elements.statusModal.classList.contains('active')) {
+                    updateStatusModalContent(data, address);
+                }
+                
+            } catch (error) {
+                console.error('Erro ao verificar status:', error);
+                
+                // Servidor offline ou erro na conexão
+                const data = {
+                    online: false,
+                    timestamp: new Date().toISOString(),
+                    error: error.message
+                };
+                
+                appState.serverStatus = data;
+                appState.lastUpdate = new Date();
+                appState.serverStartTime = null;
+                
+                setServerOffline();
+                
+                if (elements.statusModal.classList.contains('active')) {
+                    updateStatusModalContent(data, address);
+                }
+            } finally {
+                appState.isChecking = false;
+            }
+        }
+        
+        function updateUIForLoading() {
+            elements.statusIndicator.className = 'status-indicator';
+            elements.statusIndicatorSmall.className = 'status-indicator-small';
+            elements.statusText.textContent = 'Verificando...';
+            elements.footerStatus.textContent = 'Verificando...';
+        }
+        
+        function updateStatusUI(data) {
+            if (data.online) {
+                const players = data.players?.online || 0;
+                const maxPlayers = data.players?.max || 0;
+                
+                elements.statusIndicator.className = 'status-indicator online';
+                elements.statusIndicatorSmall.className = 'status-indicator-small online';
+                elements.statusText.textContent = `ONLINE (${players}/${maxPlayers} jogadores)`;
+                elements.footerStatus.textContent = `ONLINE (${players}/${maxPlayers})`;
+                elements.playerCountFooter.textContent = players;
+                
+                const now = new Date();
+                elements.lastUpdate.textContent = now.toLocaleTimeString('pt-BR', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            } else {
+                setServerOffline();
+            }
+        }
+        
+        function setServerOffline() {
+            elements.statusIndicator.className = 'status-indicator';
+            elements.statusIndicatorSmall.className = 'status-indicator-small';
+            elements.statusText.textContent = 'OFFLINE';
+            elements.footerStatus.textContent = 'OFFLINE';
+            elements.playerCountFooter.textContent = '0';
+        }
+        
+        function updateUptime() {
+            if (appState.serverStartTime) {
+                const now = new Date();
+                const diff = Math.floor((now - appState.serverStartTime) / 1000);
+                
+                if (diff < 60) {
+                    elements.serverUptime.textContent = `${diff}s`;
+                } else if (diff < 3600) {
+                    const minutes = Math.floor(diff / 60);
+                    const seconds = diff % 60;
+                    elements.serverUptime.textContent = `${minutes}m ${seconds}s`;
+                } else if (diff < 86400) {
+                    const hours = Math.floor(diff / 3600);
+                    const minutes = Math.floor((diff % 3600) / 60);
+                    elements.serverUptime.textContent = `${hours}h ${minutes}m`;
+                } else {
+                    const days = Math.floor(diff / 86400);
+                    const hours = Math.floor((diff % 86400) / 3600);
+                    elements.serverUptime.textContent = `${days}d ${hours}h`;
+                }
+            } else {
+                elements.serverUptime.textContent = '--';
+            }
+        }
+        
+        function updateStatusModalContent(data, serverAddress) {
+            const isOnline = data.online;
+            const players = data.players?.online || 0;
+            const maxPlayers = data.players?.max || 0;
+            const version = data.version || 'Desconhecida';
+            
+            // Extrair MOTD
+            let motd = 'Sem descrição';
+            if (data.motd) {
+                if (data.motd.clean) {
+                    motd = Array.isArray(data.motd.clean) ? data.motd.clean.join(' ') : data.motd.clean;
+                } else if (typeof data.motd === 'string') {
+                    motd = data.motd;
+                }
+            }
+            
+            // Lista de jogadores
+            let playersList = [];
+            if (data.players && data.players.list) {
+                playersList = data.players.list;
+            }
+            
+            let playersHTML = '';
+            
+            if (isOnline && players > 0) {
+                if (playersList.length > 0) {
+                    // Mostrar jogadores reais
+                    playersHTML = playersList.map(player => `
+                        <div class="player-card">
+                            <div class="player-head-modal">
+                                <img src="https://mc-heads.net/avatar/${player}/80" alt="${player}">
+                            </div>
+                            <span>${player}</span>
+                        </div>
+                    `).join('');
+                    
+                    if (players > playersList.length) {
+                        playersHTML += `
+                            <div class="player-card" style="grid-column: span 2;">
+                                <div style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <span>E mais ${players - playersList.length} jogadores...</span>
+                            </div>
+                        `;
+                    }
+                } else {
+                    // Lista de jogadores não disponível
+                    playersHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--light);">
+                            <i class="fas fa-users" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+                            <p style="font-size: 1.3rem; margin-bottom: 10px;">${players} jogadores online</p>
+                            <p style="color: var(--gray);">A lista de jogadores não está disponível</p>
+                        </div>
+                    `;
+                }
+            } else if (isOnline) {
+                playersHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--gray);">
+                        <i class="fas fa-user-slash" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                        <p>Nenhum jogador online no momento</p>
+                    </div>
+                `;
+            }
+            
+            elements.statusModalContent.innerHTML = `
+                <div class="status-details-grid">
+                    <div class="status-item">
+                        <div class="label">Status</div>
+                        <div class="value ${isOnline ? 'online' : 'offline'}">${isOnline ? 'ONLINE' : 'OFFLINE'}</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="label">Jogadores</div>
+                        <div class="value">${players}/${maxPlayers}</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="label">Versão</div>
+                        <div class="value">${version}</div>
+                    </div>
+                    <div class="status-item" style="width: 875px;">
+                        <div class="label">IP do Servidor</div>
+                        <div class="value">${serverAddress}</div>
+                    </div>
+                </div>
+                
+                ${isOnline ? `
+                    <div style="margin: 30px 0; padding: 25px; background-color: rgba(0,0,0,0.2); border-radius: 15px; border-left: 4px solid var(--primary);">
+			<p style="font-size: 30px;">MOTD</p>
+                        <p style="color: var(--gray); font-style: italic; margin: 0; font-size: 1.1rem;">"${motd}"</p>
+                    </div>
+                ` : `
+                    <div style="margin: 30px 0; padding: 40px; text-align: center; background-color: rgba(244, 67, 54, 0.1); border-radius: 15px; border-left: 4px solid var(--danger);">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--danger); margin-bottom: 20px;"></i>
+                        <p style="color: var(--light); font-weight: 500; font-size: 1.2rem;">Servidor offline ou não encontrado</p>
+                        <p style="color: var(--gray); margin-top: 10px;">Verifique o IP e porta e tente novamente</p>
+                    </div>
+                `}
+                
+                <div class="players-section">
+                    <h4><i class="fas fa-users"></i> Jogadores Online (${players})</h4>
+                    <div class="players-grid">
+                        ${playersHTML}
+                    </div>
+                </div>
+                
+                <div style="margin-top: 40px; text-align: center; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <button class="check-btn" id="refreshStatusBtn" style="padding: 15px 30px;">
+                        <i class="fas fa-redo"></i> Atualizar Status
+                    </button>
+                    ${serverAddress !== `${CONFIG.SERVER_IP}:${CONFIG.SERVER_PORT}` ? `
+                        <button class="check-btn" id="backToMainBtn" style="padding: 15px 30px; background: linear-gradient(135deg, var(--dark-light), #2a2a2a);">
+                            <i class="fas fa-home"></i> Voltar ao Principal
+                        </button>
+                    ` : ''}
+                    <button class="check-btn" id="copyServerIpBtn" style="padding: 15px 30px; background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
+                        <i class="fas fa-copy"></i> Copiar IP
+                    </button>
+                </div>
+                
+                <div style="margin-top: 30px; text-align: center; color: var(--gray); font-size: 0.95rem;">
+                    <i class="fas fa-clock"></i> Última verificação: ${appState.lastUpdate ? appState.lastUpdate.toLocaleTimeString('pt-BR') : 'Nunca'}
+                </div>
+            `;
+            
+            document.getElementById('refreshStatusBtn')?.addEventListener('click', () => {
+                delete appState.cache[serverAddress];
+                delete appState.lastCacheTime[serverAddress];
+                checkServerStatus(serverAddress);
+            });
+            
+            document.getElementById('backToMainBtn')?.addEventListener('click', () => {
+                elements.customServerInput.value = `${CONFIG.SERVER_IP}:${CONFIG.SERVER_PORT}`;
+                checkServerStatus(`${CONFIG.SERVER_IP}:${CONFIG.SERVER_PORT}`);
+            });
+            
+            document.getElementById('copyServerIpBtn')?.addEventListener('click', () => {
+                copyToClipboard(serverAddress);
+                showNotification(`IP copiado: ${serverAddress}`, 'success');
+            });
+        }
+        
+        // ============================
+        // UTILITÁRIOS
+        // ============================
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            });
+        }
+        
+        function showNotification(message, type = 'success') {
+            elements.notificationText.textContent = message;
+            elements.notification.className = `notification ${type}`;
+            elements.notification.classList.add('show');
+            
+            setTimeout(() => {
+                elements.notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        function initCurrentYear() {
+            elements.currentYear.textContent = CONFIG.CURRENT_YEAR;
+        }
+        
+        function initScrollTop() {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) {
+                    elements.scrollTopBtn.classList.add('show');
+                } else {
+                    elements.scrollTopBtn.classList.remove('show');
+                }
+            });
+            
+            elements.scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+        
+        // ============================
+        // EVENT LISTENERS
+        // ============================
+        function initEventListeners() {
+            // Copiar IP
+            elements.copyIpBtn.addEventListener('click', () => {
+                copyToClipboard(`${CONFIG.SERVER_IP}:${CONFIG.SERVER_PORT}`);
+                showNotification('IP copiado com sucesso!', 'success');
+            });
+            
+            // Status modal
+            elements.statusBtn.addEventListener('click', openStatusModal);
+            elements.mobileStatusBtn.addEventListener('click', openStatusModal);
+            elements.serverStatusBadge.addEventListener('click', openStatusModal);
+            elements.closeModal.addEventListener('click', closeStatusModal);
+            
+            // Menu mobile
+            elements.mobileMenuBtn.addEventListener('click', openMobileMenu);
+            elements.closeMenuBtn.addEventListener('click', closeMobileMenu);
+            
+            // Verificar servidor personalizado
+            elements.checkServerBtn.addEventListener('click', checkCustomServer);
+            elements.customServerInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    checkCustomServer();
+                }
+            });
+            
+            // Fechar modal ao clicar fora
+            elements.statusModal.addEventListener('click', (e) => {
+                if (e.target === elements.statusModal) {
+                    closeStatusModal();
+                }
+            });
+            
+            // Fechar menu mobile ao clicar em um link
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+            
+            // Links do menu mobile (status)
+            document.getElementById('mobileStatusBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                openStatusModal();
+                closeMobileMenu();
+            });
+            
+            setupSmoothScrolling();
+        }
+        
+        async function checkCustomServer() {
+            const input = elements.customServerInput.value.trim();
+            if (!input) return;
+            
+            showNotification(`Verificando status de ${input}...`, 'info');
+            
+            delete appState.cache[input];
+            delete appState.lastCacheTime[input];
+            
+            await checkServerStatus(input);
+        }
+        
+        function openMobileMenu() {
+            elements.mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            elements.mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function openStatusModal() {
+            elements.statusModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            if (!appState.serverStatus) {
+                checkServerStatus(appState.currentServer);
+            } else {
+                updateStatusModalContent(appState.serverStatus, appState.currentServer);
+            }
+        }
+        
+        function closeStatusModal() {
+            elements.statusModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href === '#') {
+                        e.preventDefault();
+                        return;
+                    }
+                    
+                    if (href === '#home') {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                        return;
+                    }
+                    
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        updateActiveNav(href);
+                    }
+                });
+            });
+            
+            window.addEventListener('scroll', updateActiveNavOnScroll);
+        }
+        
+        function updateActiveNav(href) {
+            document.querySelectorAll('.desktop-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === href) {
+                    link.classList.add('active');
+                }
+            });
+            
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === href) {
+                    link.classList.add('active');
+                }
+            });
+        }
+        
+        function updateActiveNavOnScroll() {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const headerHeight = document.querySelector('header').offsetHeight;
+                
+                if (scrollY >= (sectionTop - headerHeight - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            if (current) {
+                updateActiveNav(`#${current}`);
+            }
+        }
+        
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
