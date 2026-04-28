@@ -1,6 +1,6 @@
 Site do servidor Playnewcraft
 
-- Site do Título do
+- Título do site
 - categorias
 - loja de vips
 - Discord
